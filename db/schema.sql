@@ -1,5 +1,13 @@
 CREATE DATABASE fitMess;
 
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS exercise;
+DROP TABLE IF EXISTS workouts;
+DROP TABLE IF EXISTS log;
+DROP TABLE IF EXISTS exercise_workouts_junction;
+
+
+-- each user information
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     full_name TEXT,
@@ -8,25 +16,38 @@ CREATE TABLE users (
     password_digest TEXT
 );
 
+-- individual exercises, can belong to different users
 CREATE TABLE exercise (
     id SERIAL PRIMARY KEY,
-    exercise_id INTEGER
     title TEXT,
     weight INTEGER,
     sets INTEGER,
     reps INTEGER,
     rest INTEGER
+    user_id INT REFERENCES users (id)
 );
 
-CREATE TABLE workout (
+-- can be used by multiple users, only one user can own the workout
+CREATE TABLE workouts (
     id SERIAL PRIMARY KEY,
-    workout_id INTEGER
+    user_id INT REFERENCES users (id),
     workout_name TEXT,
 );
 
-CREATE TABLE workout_log (
+-- list of past workouts from each user
+CREATE TABLE log (
     id SERIAL PRIMARY KEY,
-    workout_id INTEGER,
+    user_id INT REFERENCES users (id),
+    workout_id INT REFERENCES workouts (id),
+    date datetime,
+);
+
+-- which exercises are a part of which workout
+CREATE TABLE exercise_workouts_junction (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users (id),
+    workout_id INT REFERENCES workouts (id),
+    exercise_id INT REFERENCES exercise (id),
     date datetime,
 );
 
