@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS exercise;
 DROP TABLE IF EXISTS workouts;
 DROP TABLE IF EXISTS log;
-DROP TABLE IF EXISTS exercise_workouts_junction;
+DROP TABLE IF EXISTS workout_exercises_junction;
 
 
 -- each user information
@@ -30,8 +30,9 @@ CREATE TABLE exercise (
 -- can be used by multiple users, only one user can own the workout
 CREATE TABLE workouts (
     id SERIAL PRIMARY KEY,
+    title TEXT,
     user_id INT REFERENCES users (id),
-    workout_name TEXT,
+    exercise_id INT REFERENCES exercise (id),
 );
 
 -- list of past workouts from each user
@@ -43,12 +44,11 @@ CREATE TABLE log (
 );
 
 -- which exercises are a part of which workout
-CREATE TABLE exercise_workouts_junction (
+CREATE TABLE workout_exercises_junction (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users (id),
     workout_id INT REFERENCES workouts (id),
     exercise_id INT REFERENCES exercise (id),
-    date datetime,
 );
 
 INSERT INTO exercise (title, sets, reps, rest) VALUES ('Squat', '5', '5', '45');
