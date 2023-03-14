@@ -10,6 +10,7 @@ CREATE TABLE users (
 
 CREATE TABLE exercise (
     id SERIAL PRIMARY KEY,
+    exercise_id INTEGER
     title TEXT,
     weight INTEGER,
     sets INTEGER,
@@ -19,6 +20,7 @@ CREATE TABLE exercise (
 
 CREATE TABLE workout (
     id SERIAL PRIMARY KEY,
+    workout_id INTEGER
     workout_name TEXT,
 );
 
