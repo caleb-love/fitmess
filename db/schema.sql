@@ -23,7 +23,7 @@ CREATE TABLE exercise (
     weight INTEGER,
     sets INTEGER,
     reps INTEGER,
-    rest INTEGER
+    rest INTEGER,
     user_id INT REFERENCES users (id)
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE workouts (
     id SERIAL PRIMARY KEY,
     title TEXT,
     user_id INT REFERENCES users (id),
-    exercise_id INT REFERENCES exercise (id),
+    exercise_id INT REFERENCES exercise (id)
 );
 
 -- list of past workouts from each user
@@ -40,7 +40,7 @@ CREATE TABLE log (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users (id),
     workout_id INT REFERENCES workouts (id),
-    date datetime,
+    date datetime
 );
 
 -- which exercises are a part of which workout
@@ -48,7 +48,7 @@ CREATE TABLE workout_exercises_junction (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users (id),
     workout_id INT REFERENCES workouts (id),
-    exercise_id INT REFERENCES exercise (id),
+    exercise_id INT REFERENCES exercise (id)
 );
 
 INSERT INTO exercise (title, sets, reps, rest) VALUES ('Squat', '5', '5', '45');
