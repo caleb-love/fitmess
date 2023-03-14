@@ -51,4 +51,4 @@ CREATE TABLE workout_exercises_junction (
     exercise_id INT REFERENCES exercise (id)
 );
 
-INSERT INTO exercise (title, sets, reps, rest) VALUES ('Squat', '5', '5', '45');
+INSERT INTO exercise (title, weight, sets, reps, rest) VALUES ('Squat', '5', '5', '45');
