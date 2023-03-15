@@ -6,8 +6,8 @@
 <p>Rest Duration: <%= exercise.rest %> seconds</p>
 
 
-<button><a href="/exercise/<%= exercise.id %>/edit">Edit</a></button>
-<form action="/exercise/<%= exercise.id %>" method="post">
+<button><a href="/exercises/<%= exercise.id %>/edit">Edit</a></button>
+<form action="/exercises/<%= exercise.id %>" method="post">
   <input type="hidden" name="_method" value="delete" />
   <button>Delete</button>
 </form>

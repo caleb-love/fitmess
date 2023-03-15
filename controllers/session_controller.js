@@ -36,6 +36,10 @@ router.post("/sessions", (req, res) => {
   });
 });
 
+router.get('/', (req, res) => {
+    res.render("home");
+});
+
 router.delete("/sessions", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/login");

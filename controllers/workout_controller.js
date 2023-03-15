@@ -5,22 +5,22 @@ const ensureLoggedIn = require("./../middlewares/ensure_logged_in");
 
 const db = require("./../db");
 
-router.get("/", (req, res) => {
-  const sql = "SELECT * FROM workouts;";
+router.get("/workouts", (req, res) => {
+  const sql = "SELECT * FROM workouts ORDER BY title ASC;;";
 
   db.query(sql, (err, dbRes) => {
     const workouts = dbRes.rows;
-    res.render("home", {
+    res.render("workout_list", {
       workouts: workouts,
     });
   });
 });
 //       |
 router.get("/workouts/new", ensureLoggedIn, (req, res) => {
-  const sql = `select * from exercises;`;
+  const sql = `select * from exercises ORDER BY title ASC;;`;
   db.query(sql, (err, dbRes) => {
     const exercises = dbRes.rows;
-    res.render("new_workout", {
+    res.render("workout_new", {
       exercises: exercises,
     });
   });
@@ -60,7 +60,7 @@ router.get("/workouts/:workout_id/edit", (req, res) => {
       console.log(err);
     } else {
       const workout = dbRes.rows[0];
-      res.render("edit_workout", { workout: workout });
+      res.render("workout_edit", { workout: workout });
     }
   });
 });

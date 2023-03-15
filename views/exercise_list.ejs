@@ -1,0 +1,11 @@
+<h2>Exercise List</h2>
+
+<section class="exercises">
+    <% for (let exercise of exercises) { %>
+  
+    <div class="ui-card">
+      <h2><a href="/exercises/<%= exercise.id %>"><%= exercise.title %></a></h2>
+    </div>
+  
+    <% } %>
+  </section>

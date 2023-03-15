@@ -5,25 +5,24 @@ const ensureLoggedIn = require("./../middlewares/ensure_logged_in");
 
 const db = require("./../db");
 
-router.get("/", (req, res) => {
-  const sql = "SELECT * FROM exercises;";
+router.get("/exercises", (req, res) => {
+  const sql = "SELECT * FROM exercises ORDER BY title ASC;";
 
   db.query(sql, (err, dbRes) => {
     if (err) {
       console.log("get exercise_controller not working", err);
     }
     const exercises = dbRes.rows;
-    res.render("home", {
+    res.render("exercise_list", {
       exercises: exercises,
     });
   });
 });
 
 router.get("/exercises/new", ensureLoggedIn, (req, res) => {
-  res.render("new_exercise");
+  res.render("exercise_new");
 });
-//       |
-//       V
+
 router.get("/exercises/:id", ensureLoggedIn, (req, res) => {
   const sql = `select * from exercises where id = $1;`;
   console.log(sql);
@@ -54,7 +53,7 @@ router.post("/exercises", ensureLoggedIn, (req, res) => {
       req.session.userId,
     ],
     (err, dbRes) => {
-      res.redirect("/");
+      res.redirect("/exercises");
     }
   );
 });
@@ -67,7 +66,7 @@ router.get("/exercises/:exercise_id/edit", (req, res) => {
       console.log(err);
     } else {
       const exercise = dbRes.rows[0];
-      res.render("edit_exercise", { exercise: exercise });
+      res.render("exercise_edit", { exercise: exercise });
     }
   });
 });
@@ -82,7 +81,7 @@ router.put("/exercises/:exercise_id", (req, res) => {
       req.body.weight,
       req.body.sets,
       req.body.reps,
-      rep.body.rest,
+      req.body.rest,
       req.params.exercise_id,
     ],
     (err, dbRes) => {
@@ -95,7 +94,7 @@ router.delete("/exercises/:exercise_id", (req, res) => {
   const sql = `DELETE FROM exercises WHERE id = $1;`;
 
   db.query(sql, [req.params.exercise_id], (err, dbRes) => {
-    res.redirect("/");
+    res.redirect("/exercises");
   });
 });
 

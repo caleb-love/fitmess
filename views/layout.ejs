@@ -13,15 +13,21 @@
 
       <nav>
         <% if (isLoggedIn()) { %>
-          <a href="/">Home</a>
+        <a href="/">Home</a>
+        <div>
+          <a href="/exercises">All Exercises</a>
+          <a href="/workouts">All Workouts</a>
+        </div>
+
+        <div>
           <a href="/exercises/new">Create an Exercise</a>
           <a href="/workouts/new">Create a Workout</a>
-          <a href="/workouts/list">Do Workout</a>
-          <% } %>
-        <% if (isLoggedIn() === false) { %>
-          <a href="/login">Login</a>
-          <a href="/signup">Sign Up</a>
-          <% } %>
+        </div>
+        <a href="/workouts/list">Do Workout</a>
+        <% } %> <% if (isLoggedIn() === false) { %>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+        <% } %>
       </nav>
     </header>
 
@@ -29,7 +35,7 @@
 
     <footer>
       <div>
-      <% if (isLoggedIn()) { %>
+        <% if (isLoggedIn()) { %>
         <form action="/sessions" method="post">
           <input type="hidden" name="_method" value="delete" />
           <button>Logout</button>
@@ -39,7 +45,12 @@
       </div>
 
       <div>
-        <p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>, Caleb Love.</p>
+        <p>
+          &copy; Copyright
+          <script>
+            document.write(new Date().getFullYear());
+          </script>, Caleb Love.
+        </p>
       </div>
     </footer>
   </body>
