@@ -9,13 +9,16 @@ router.get("/", (req, res) => {
   const sql = "SELECT * FROM exercises;"
 
   db.query(sql, (err, dbRes) => {
+    if (err) {
+        console.log('get exercise_controller not working', err);
+    }
     const exercises = dbRes.rows
     res.render("home", {
       exercises: exercises,
     })
   })
 })
-//       |
+
 router.get("/exercises/new", ensureLoggedIn, (req, res) => {
   res.render("new_exercise")
 })
@@ -69,7 +72,7 @@ router.put("/exercises/:exercise_id", (req, res) => {
 
   db.query(
     sql,
-    [req.body.title, req.body.weight, req.body.sets, req.body.sets, req.body.reps, rep.body.rest, req.params.exercise_id],
+    [req.body.title, req.body.weight, req.body.sets, req.body.reps, rep.body.rest, req.params.exercise_id],
     (err, dbRes) => {
       res.redirect(`/exercises/${req.params.exercise_id}`)
     }

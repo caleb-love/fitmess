@@ -2,7 +2,7 @@ const { Pool } = require("pg")
 
 const config = {
   dev: {
-    database: "fitMess",
+    database: "fitmess",
   },
   prod: {
     connectionString: process.env.DATABASE_URL,

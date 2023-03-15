@@ -11,12 +11,14 @@ router.get("/", (req, res) => {
   db.query(sql, (err, dbRes) => {
     const workouts = dbRes.rows
     res.render("home", {
-      workouts: workout,
+      workouts: workouts,
     })
   })
 })
 //       |
 router.get("/workouts/new", ensureLoggedIn, (req, res) => {
+    const sql = `select * from exercises where id = $1;`
+
   res.render("new_workout")
 })
 //       |
@@ -37,13 +39,13 @@ router.get("/workouts/:id", ensureLoggedIn, (req, res) => {
 
 router.post("/workouts", ensureLoggedIn, (req, res) => {
   const sql = `
-    INSERT INTO workouts (title, image_url, user_id) 
-    VALUES ($1, $2, $3);
+    INSERT INTO workouts (title, user_id) 
+    VALUES ($1, $2);
   `
 
   db.query(
     sql,
-    [req.body.title, req.body.image_url, req.session.userId],
+    [req.body.title, req.session.userId],
     (err, dbRes) => {
       res.redirect("/")
     }
@@ -65,11 +67,11 @@ router.get("/workouts/:workout_id/edit", (req, res) => {
 })
 
 router.put("/workouts/:workout_id", (req, res) => {
-  const sql = `UPDATE workouts SET title = $1, image_url = $2 WHERE id = $3;`
+  const sql = `UPDATE workouts SET title = $1 WHERE id = $2;`
 
   db.query(
     sql,
-    [req.body.title, req.body.image_url, req.params.workout_id],
+    [req.body.title, req.params.workout_id],
     (err, dbRes) => {
       res.redirect(`/workouts/${req.params.workout_id}`)
     }

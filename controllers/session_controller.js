@@ -8,14 +8,15 @@ router.get("/login", (req, res) => {
 })
 
 router.post("/sessions", (req, res) => {
-  const { email, password } = req.body
+  const { email, username, password } = req.body
 
   // do you even existing the users table
   const sql = `SELECT * FROM users WHERE email = $1;`
 
   db.query(sql, [email], (err, dbRes) => {
-    // did we get a record back?
-    if (dbRes.rows.length === 0) {
+      console.log(err);
+      // did we get a record back?
+      if (dbRes.rows.length === 0) {
       // no good, user doesn't exist in the users table, stay at the login page
       res.render("login")
       return

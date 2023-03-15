@@ -1,10 +1,10 @@
 CREATE DATABASE fitMess;
 
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS exercises;
-DROP TABLE IF EXISTS workouts;
-DROP TABLE IF EXISTS logs;
-DROP TABLE IF EXISTS workouts_exercises_junction;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS exercises CASCADE;
+DROP TABLE IF EXISTS workouts CASCADE;
+DROP TABLE IF EXISTS logs CASCADE;
+DROP TABLE IF EXISTS workouts_exercises_junction CASCADE;
 
 
 -- each user information
@@ -55,4 +55,4 @@ INSERT INTO users (full_name, username, email, password_digest) VALUES ('Caleb L
 
 INSERT INTO exercises (title, weight, sets, reps, rest, user_id) VALUES ('Squat', 100, 5, 5, 45, 1);
 
-INSERT INTO workouts (title, user_id) VALUES ('Leg Day', 1);
+INSERT INTO workouts (title, user_id, exercise_id) VALUES ('Leg Day', 1, 1);
