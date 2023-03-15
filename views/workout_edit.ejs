@@ -1,0 +1,18 @@
+<h2><%= workout.id %></h2>
+
+<form action="/workouts/<%= workout.id %>" method="post">
+  <input type="hidden" name="_method" value="put" />
+
+  <label for="">Edit Workout Exercises</label>
+  <% for (let i = 0; i < exercises.length; i++) { %>
+  <li>
+    <input
+      type="checkbox"
+      id="<%= exercises[i].title %>"
+      name="<%= exercises[i].title %>"
+    />
+    <label for="<%= exercises[i].title %>"><%= exercises[i].title %></label>
+  </li>
+  <% } %>
+  <button>Update</button>
+</form>

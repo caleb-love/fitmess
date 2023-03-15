@@ -1,15 +1,25 @@
-<h1>Create an Exercise</h1>
+<h2>Create an Exercise</h2>
 
 <form action="/exercises" method="post">
-  <label for="">Exercise</label>
+  <li>
+  <label for="">Exercise Name</label>
   <input type="text" name="title" />
+</li>
+<li>
   <label for="">Weight</label>
   <input type="number" name="weight" min="0" max="300"/>
+</li>
+<li>
   <label for="">Sets</label>
   <input type="number" name="sets" min="1" max="300"/>
+</li>
+<li>
   <label for="">Reps</label>
   <input type="number" name="reps" min="1" max="100"/>
+</li>
+<li>
   <label for="">Rest Timer</label>
   <input type="number" name="rest" min="0" max="300"/>
+</li>
   <button>Add</button>
 </form>

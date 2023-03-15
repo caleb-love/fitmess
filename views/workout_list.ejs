@@ -1,2 +1,11 @@
 <h2>Workout List</h2>
 
+<section class="workouts">
+    <% for (let workout of workouts) { %>
+  
+    <div class="ui-card">
+      <h2><a href="/workouts/<%= workout.id %>"><%= workout.hello %></a></h2>
+    </div>
+  
+    <% } %>
+  </section>

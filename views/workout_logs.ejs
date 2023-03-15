@@ -1,0 +1,10 @@
+<h2>Past Workouts</h2>
+
+<% for (let workout of workouts) { %>
+    <p><%=workout.title%></p>
+    <% for (let exercise of exercises) { %>
+        <% if (workout.workout_id === exercise.workout_id) { %>
+            <%= exercise.title %>
+        <% } %>
+    <% } %>
+<% } %>
