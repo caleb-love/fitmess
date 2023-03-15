@@ -17,9 +17,13 @@ router.get("/", (req, res) => {
 })
 //       |
 router.get("/workouts/new", ensureLoggedIn, (req, res) => {
-    const sql = `select * from exercises where id = $1;`
-
-  res.render("new_workout")
+    const sql = `select * from exercises;`
+    db.query(sql, (err, dbRes) => {
+        const exercises = dbRes.rows
+        res.render("new_workout", {
+          exercises: exercises,
+        })
+      })
 })
 //       |
 //       V
