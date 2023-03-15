@@ -1,10 +1,10 @@
 CREATE DATABASE fitMess;
 
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS exercise;
+DROP TABLE IF EXISTS exercises;
 DROP TABLE IF EXISTS workouts;
-DROP TABLE IF EXISTS log;
-DROP TABLE IF EXISTS workout_exercises_junction;
+DROP TABLE IF EXISTS logs;
+DROP TABLE IF EXISTS workouts_exercises_junction;
 
 
 -- each user information
@@ -17,7 +17,7 @@ CREATE TABLE users (
 );
 
 -- individual exercises, can belong to different users
-CREATE TABLE exercise (
+CREATE TABLE exercises (
     id SERIAL PRIMARY KEY,
     title TEXT,
     weight INTEGER,
@@ -32,11 +32,11 @@ CREATE TABLE workouts (
     id SERIAL PRIMARY KEY,
     title TEXT,
     user_id INT REFERENCES users (id),
-    exercise_id INT REFERENCES exercise (id)
+    exercise_id INT REFERENCES exercises (id)
 );
 
 -- list of past workouts from each user
-CREATE TABLE log (
+CREATE TABLE logs (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users (id),
     workout_id INT REFERENCES workouts (id),
@@ -48,11 +48,11 @@ CREATE TABLE workout_exercises_junction (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users (id),
     workout_id INT REFERENCES workouts (id),
-    exercise_id INT REFERENCES exercise (id)
+    exercises_id INT REFERENCES exercises (id)
 );
 
 INSERT INTO users (full_name, username, email, password_digest) VALUES ('Caleb Love', 'caleblove', 'caleblove@live.com', '$2b$10$A0S6ZTdOKnKWPZufyE7ozup7d3HJ/YJrMCBMYu9z6Vb0o4.HIGgJ6');
 
-INSERT INTO exercise (title, weight, sets, reps, rest, user_id) VALUES ('Squat', 100, 5, 5, 45, 1);
+INSERT INTO exercises (title, weight, sets, reps, rest, user_id) VALUES ('Squat', 100, 5, 5, 45, 1);
 
 INSERT INTO workouts (title, user_id) VALUES ('Leg Day', 1);

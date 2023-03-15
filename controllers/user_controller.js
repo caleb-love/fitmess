@@ -8,7 +8,7 @@ router.get("/signup", (req, res) => {
 })
 
 router.post("/", (req, res) => {
-  const { email, username, password, passwordConfirmation } = req.body
+  const { email, password, passwordConfirmation } = req.body
 
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(password, salt, (err, digestedPassword) => {

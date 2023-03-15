@@ -1,17 +1,12 @@
 <h1>Sign Up</h1>
-<form action="/" method="post">
-
-  <label for="">Full Name</label>
-  <input type="text" name="full_name" />
-
-  <label for="">Username</label>
-  <input type="text" name="username" />
-
-  <label for="">Email</label>
+<form class="signup" action="/users" method="post">
+  <label for="email">email</label>
   <input type="text" name="email" />
-
   <label for="">Password</label>
   <input type="password" name="password" />
-
-  <button>Sign Up</button>
+  <label for="">Password Confirmation</label>
+  <input type="password" name="password_confirmation" />
+  <p>
+    <button>Sign Up</button>
+  </p>
 </form>
