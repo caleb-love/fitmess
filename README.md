@@ -5,9 +5,8 @@
 - Functional
 - Useful
 
-![flow](https://imgur.com/CeAefLI)
-![wireframe](https://imgur.com/Ugqcvpw)
-![](https://imgur.com/a/UArZUXX)
+![flow](https://i.imgur.com/CeAefLI.png)
+![wireframe](https://i.imgur.com/Ugqcvpw.png)
 
 ## SEIR63 - Workout app
 
