@@ -1,0 +1,12 @@
+<h1>Workout Details</h1>
+
+<h2>Workout <%= workouts.id %></h2>
+
+<p><%= workouts.title %></p>
+
+
+<button><a href="/workouts/<%= workouts.id %>/edit">Edit</a></button>
+<form action="/workouts/<%= workouts.id %>" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <button>Delete</button>
+</form>
