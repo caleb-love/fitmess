@@ -5,6 +5,9 @@
 - Functional
 - Useful
 
+![flow](https://imgur.com/CeAefLI)
+![wireframe](https://imgur.com/Ugqcvpw)
+
 ## SEIR63 - Workout app
 
 - make different workouts

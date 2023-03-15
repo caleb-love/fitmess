@@ -1,8 +1,9 @@
-<h1>Exercise Datails</h1>
+<h1>Exercise Details</h1>
 
-<h2>Exercise <%= exercise.id %></h2>
-
-<p><%= exercise.title %></p>
+<h2><%= exercise.title %></h2>
+<p><%= exercise.sets %> Sets</p>
+<p><%= exercise.reps %> Reps</p>
+<p>Rest Duration: <%= exercise.rest %> seconds</p>
 
 
 <button><a href="/exercise/<%= exercise.id %>/edit">Edit</a></button>
