@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitMess</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="fitmess">FitMess</h1>
+
+      <nav>
+        <% if (isLoggedIn()) { %>
+          <a href="/">Home</a>
+          <a href="/exercise/new">Add Exercise</a>
+          <a href="/workouts/new">Add Workout</a>
+          <a href="/workouts/list">Do Workout</a>
+          <% } %>
+        <% if (isLoggedIn() === false) { %>
+          <a href="/login">Login</a>
+          <a href="/signup">Sign Up</a>
+          <% } %>
+      </nav>
+    </header>
+
+    <%- body %>
+
+    <footer>
+      <div>
+      <% if (isLoggedIn()) { %>
+        <form action="/sessions" method="post">
+          <input type="hidden" name="_method" value="delete" />
+          <button>Logout</button>
+        </form>
+        <p>Logged in as <%= currentUser.username %></p>
+        <% } %>
+      </div>
+
+      <div>
+        <p>&copy; Copyright <script>document.write(new Date().getFullYear())</script>, Caleb Love.</p>
+      </div>
+    </footer>
+  </body>
+</html>

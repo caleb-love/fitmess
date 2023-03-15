@@ -40,7 +40,7 @@ CREATE TABLE log (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users (id),
     workout_id INT REFERENCES workouts (id),
-    date datetime
+    date timestamp
 );
 
 -- which exercises are a part of which workout
@@ -51,4 +51,8 @@ CREATE TABLE workout_exercises_junction (
     exercise_id INT REFERENCES exercise (id)
 );
 
-INSERT INTO exercise (title, weight, sets, reps, rest) VALUES ('Squat', '5', '5', '45');
+INSERT INTO users (full_name, username, email, password_digest) VALUES ('Caleb Love', 'caleblove', 'caleblove@live.com', '$2b$10$A0S6ZTdOKnKWPZufyE7ozup7d3HJ/YJrMCBMYu9z6Vb0o4.HIGgJ6');
+
+INSERT INTO exercise (title, weight, sets, reps, rest, user_id) VALUES ('Squat', 100, 5, 5, 45, 1);
+
+INSERT INTO workouts (title, user_id) VALUES ('Leg Day', 1);

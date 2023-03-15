@@ -10,7 +10,7 @@ const viewHelpers = require("./middlewares/view_helpers");
 const logger = require("./middlewares/logger");
 const methodOverride = require("./middlewares/method_override");
 
-const exerciseController = require("./controllers/dish_controller");
+const exerciseController = require("./controllers/exercise_controller");
 const workoutController = require("./controllers/workout_controller");
 const sessionController = require("./controllers/session_controller");
 const userController = require("./controllers/user_controller");

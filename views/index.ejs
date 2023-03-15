@@ -1,0 +1,13 @@
+<a href="/newworkout">Do a Workout</a>
+
+<% workouts.forEach(workout => { %>
+
+  <h2>
+    <a href="/workouts/<%= workout.id %>">
+      <%= workout.title %>
+    </a>
+  </h2>
+
+<% }) %>
+
+<%- contentFor('heri') %>
