@@ -38,7 +38,7 @@ CREATE TABLE workouts (
 CREATE TABLE workouts_exercises_junction (
     junction_id SERIAL PRIMARY KEY,
     junction_workout_id INT REFERENCES workouts (workout_id),
-    junction_exercise_id INT REFERENCES exercises (exercise_id),
+    junction_exercise_id INT REFERENCES exercises (exercise_id)
 );
 
 -- list of past workouts from each user
