@@ -22,19 +22,19 @@ router.get("/workouts", ensureLoggedIn, (req, res) => {
   });
 });
 
-// router.get("/workouts", ensureLoggedIn, (req, res) => {
-//   const sql = "SELECT * FROM workouts ORDER BY workout_title ASC;;";
+router.get("/workouts", ensureLoggedIn, (req, res) => {
+  const sql = "SELECT workout_title, workout_id FROM workouts ORDER BY workout_title ASC;";
 
-//   db.query(sql, (err, dbRes) => {
-//     const workouts = dbRes.rows;
-//     res.render("workout_list", {
-//       workouts: workouts,
-//     });
-//   });
-// });
+  db.query(sql, (err, dbRes) => {
+    const workouts = dbRes.rows;
+    res.render("workout_list", {
+      workouts: workouts,
+    });
+  });
+});
 // //       |
 router.get("/workouts/new", ensureLoggedIn, (req, res) => {
-  const sql = `select * from exercises ORDER BY title ASC;;`;
+  const sql = `select * from exercises ORDER BY exercise_title ASC;;`;
   db.query(sql, (err, dbRes) => {
     const exercises = dbRes.rows;
     res.render("workout_new", {
@@ -42,21 +42,20 @@ router.get("/workouts/new", ensureLoggedIn, (req, res) => {
     });
   });
 });
-// //       |
-// //       V
-// router.get("/workouts/:id", ensureLoggedIn, (req, res) => {
-//   const sql = `select * from workouts where id = $1;`;
-//   console.log(sql);
 
-//   db.query(sql, [req.params.id], (err, dbRes) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       const workout = dbRes.rows[0];
-//       res.render("workout_details", { workout });
-//     }
-//   });
-// });
+router.get("/workouts/:id", ensureLoggedIn, (req, res) => {
+  const sql = `select * from workouts where workout_id = $1;`;
+  console.log(sql);
+
+  db.query(sql, [req.params.workout_id], (err, dbRes) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const workout = dbRes.rows[0];
+      res.render("workout_details", { workout });
+    }
+  });
+});
 
 // router.post("/workouts", ensureLoggedIn, (req, res) => {
 //   const sql = `

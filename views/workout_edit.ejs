@@ -1,6 +1,6 @@
 <h2><%= workout.id %></h2>
 
-<form action="/workouts/<%= workout.id %>" method="post">
+<form action="/workouts/<%= workout.workout_id %>" method="post">
   <input type="hidden" name="_method" value="put" />
 
   <label for="">Edit Workout Exercises</label>
@@ -8,10 +8,10 @@
   <li>
     <input
       type="checkbox"
-      id="<%= exercises[i].title %>"
-      name="<%= exercises[i].title %>"
+      id="<%= exercises[i].exercise_title %>"
+      name="<%= exercises[i].exercise_title %>"
     />
-    <label for="<%= exercises[i].title %>"><%= exercises[i].title %></label>
+    <label for="<%= exercises[i].exercise_title %>"><%= exercises[i].exercise_title %></label>
   </li>
   <% } %>
   <button>Update</button>

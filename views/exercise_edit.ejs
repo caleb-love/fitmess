@@ -1,12 +1,12 @@
 <h1>Edit Exercise</h1>
 
-<h2><%= exercise.id %></h2>
+<h2><%= exercise.exercise_id %></h2>
 
-<form action="/exercises/<%= exercise.id %>" method="post">
+<form action="/exercises/<%= exercise.exercise_id %>" method="post">
   <input type="hidden" name="_method" value="put" />
 
   <label for="">Exercise</label>
-  <input type="text" name="title" value="<%= exercise.title %>" />
+  <input type="text" name="title" value="<%= exercise.exercise_title %>" />
 
   <label for="">Weight</label>
   <input type="number" name="weight" min="0" max="300" value="<%= exercise.weight %>"/>
@@ -18,7 +18,7 @@
   <input type="number" name="reps" min="1" max="100" value="<%= exercise.reps %>"/>
 
   <label for="">Rest Timer</label>
-  <input type="number" name="rest" min="0" max="300" value="<%= exercise.resp %>"/>
+  <input type="number" name="rest" min="0" max="300" value="<%= exercise.rest %>"/>
 
   <button>update</button>
 </form>

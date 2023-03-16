@@ -1,13 +1,13 @@
 <h1>Exercise Details</h1>
 
-<h2><%= exercise.title %></h2>
+<h2><%= exercise.exercise_title %></h2>
 <p><%= exercise.sets %> Sets</p>
 <p><%= exercise.reps %> Reps</p>
 <p>Rest Duration: <%= exercise.rest %> seconds</p>
 
 
-<button><a href="/exercises/<%= exercise.id %>/edit">Edit</a></button>
-<form action="/exercises/<%= exercise.id %>" method="post">
+<button><a href="/exercises/<%= exercise.exercise_id %>/edit">Edit</a></button>
+<form action="/exercises/<%= exercise.exercise_id %>" method="post">
   <input type="hidden" name="_method" value="delete" />
   <button>Delete</button>
 </form>

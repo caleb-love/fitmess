@@ -5,7 +5,7 @@ const ensureLoggedIn = require("./../middlewares/ensure_logged_in");
 
 const db = require("./../db");
 
-// dont use * in code
+// shows all exercises
 router.get("/exercises", (req, res) => {
   const sql = "SELECT * FROM exercises ORDER BY exercise_title ASC;";
 
@@ -18,10 +18,7 @@ router.get("/exercises", (req, res) => {
   });
 });
 
-router.get("/exercises/new", (req, res) => {
-  res.render("exercise_new");
-});
-
+// show individual exercise
 router.get("/exercises/:id", (req, res) => {
   const sql = `select * from exercises where exercise_id = $1;`;
   console.log(sql);
@@ -36,6 +33,12 @@ router.get("/exercises/:id", (req, res) => {
   });
 });
 
+// show new exercise page
+router.get("/exercises/new", (req, res) => {
+  res.render("exercise_new");
+});
+
+// add an exercise
 router.post("/exercises", (req, res) => {
   const sql = `
     INSERT INTO exercises (exercise_title, weight, sets, reps, rest, exercise_user_id) VALUES ($1, $2, $3, $4, $5, $6);
@@ -92,7 +95,7 @@ router.put("/exercises/:exercise_id", (req, res) => {
 router.delete("/exercises/:exercise_id", (req, res) => {
   const sql = `DELETE FROM exercises WHERE exercise_id = $1;`;
 
-  db.query(sql, [req.params.id], (err, dbRes) => {
+  db.query(sql, [req.params.exercise_id], (err, dbRes) => {
     res.redirect("/exercises");
   });
 });
