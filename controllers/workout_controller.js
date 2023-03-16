@@ -23,7 +23,7 @@ router.get("/workouts", ensureLoggedIn, (req, res) => {
 });
 
 // router.get("/workouts", ensureLoggedIn, (req, res) => {
-//   const sql = "SELECT * FROM workouts ORDER BY title ASC;;";
+//   const sql = "SELECT * FROM workouts ORDER BY workout_title ASC;;";
 
 //   db.query(sql, (err, dbRes) => {
 //     const workouts = dbRes.rows;
@@ -60,7 +60,7 @@ router.get("/workouts/new", ensureLoggedIn, (req, res) => {
 
 // router.post("/workouts", ensureLoggedIn, (req, res) => {
 //   const sql = `
-//     INSERT INTO workouts (title, user_id)
+//     INSERT INTO workouts (title, id)
 //     VALUES ($1, $2);
 //   `;
 

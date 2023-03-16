@@ -26,7 +26,7 @@ router.post("/sessions", (req, res) => {
 
     bcrypt.compare(password, user.password_digest, (err, result) => {
       if (result) {
-        req.session.userId = user.id;
+        req.session.userId = user.user_id;
 
         res.redirect("/");
       } else {

@@ -6,7 +6,7 @@ function setCurrentUser(req, res, next) {
   res.locals.currentUser = {};
 
   if (userId) {
-    const sql = `SELECT id, email FROM users WHERE id = ${userId}`;
+    const sql = `SELECT user_id, email FROM users WHERE user_id = ${userId}`;
 
     db.query(sql, (err, dbRes) => {
       if (err) {
