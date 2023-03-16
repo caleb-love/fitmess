@@ -18,10 +18,15 @@ router.get("/exercises", (req, res) => {
   });
 });
 
+// show new exercise page
+router.get("/exercises/new", ensureLoggedIn, (req, res) => {
+  res.render("exercise_new")
+});
+
 // show individual exercise
 router.get("/exercises/:id", (req, res) => {
   const sql = `select * from exercises where exercise_id = $1;`;
-  console.log(sql);
+  console.log('/exercises/:id sql', sql);
 
   db.query(sql, [req.params.id], (err, dbRes) => {
     if (err) {
@@ -33,16 +38,6 @@ router.get("/exercises/:id", (req, res) => {
   });
 });
 
-// show new exercise page
-router.get("/exercises/new", ensureLoggedIn, (req, res) => {
-  const sql = `select exercise_title, exercise_id from exercises;`;
-  db.query(sql, (err, dbRes) => {
-    const exercises = dbRes.rows;
-    res.render("exercise_new", {
-      exercises: exercises,
-    });
-  });
-});
 
 // add an exercise
 router.post("/exercises", (req, res) => {

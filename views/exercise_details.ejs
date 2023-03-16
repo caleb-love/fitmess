@@ -1,10 +1,11 @@
 <h1>Exercise Details</h1>
 
-<h2><%= exercise.exercise_title %></h2>
-<p><%= exercise.sets %> Sets</p>
-<p><%= exercise.reps %> Reps</p>
-<p>Rest Duration: <%= exercise.rest %> seconds</p>
-
+<div class="ex_details">
+  <h2><%= exercise.exercise_title %></h2>
+  <p><%= exercise.sets %> Sets</p>
+  <p><%= exercise.reps %> Reps</p>
+  <p>Rest Duration: <%= exercise.rest %> seconds</p>
+</div>
 
 <button><a href="/exercises/<%= exercise.exercise_id %>/edit">Edit</a></button>
 <form action="/exercises/<%= exercise.exercise_id %>" method="post">

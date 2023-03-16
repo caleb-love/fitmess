@@ -8,3 +8,60 @@ body {
 li {
     list-style: none;
 }
+
+.new_ex_form {
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    text-align: left;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: white;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 5px black;
+    color: black;
+
+    
+}
+
+.exercises {
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: white;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 5px black;
+    color: black;
+
+}
+
+.ex_details {
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: white;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 5px black;
+    color: black;
+}
+
+input {
+    border: 1px solid black;
+    background-color: white;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 5px black;
+}
