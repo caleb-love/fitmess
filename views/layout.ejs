@@ -13,18 +13,15 @@
 
       <nav>
         <% if (isLoggedIn()) { %>
-        <a href="/">Home</a>
         <div>
+          <a href="/">Home</a>
           <a href="/exercises">All Exercises</a>
           <a href="/workouts">All Workouts</a>
-        </div>
-
-        <div>
           <a href="/exercises/new">Create an Exercise</a>
           <a href="/workouts/new">Create a Workout</a>
+          <a href="/workouts/list">Do Workout</a>
         </div>
-        <a href="/workouts/list">Do Workout</a>
-        
+
         <% } %> <% if (isLoggedIn() === false) { %>
         <a href="/login">Login</a>
         <a href="/users/signup">Sign Up</a>
@@ -50,7 +47,8 @@
           &copy; Copyright
           <script>
             document.write(new Date().getFullYear());
-          </script>, Caleb Love.
+          </script>
+          , Caleb Love.
         </p>
       </div>
     </footer>

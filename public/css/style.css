@@ -5,14 +5,24 @@ body {
     background-color: #f5f5f7;
     text-align: center;
 }
+a:visited {
+    color: #424245;
+    text-decoration: none;
+}
 
 li {
     list-style: none;
 }
 
+
 .fitmess {
     text-align: left;
     margin: 40px;
+}
+
+.inspiration {
+    margin-left: 30%;
+    text-align: left;
 }
 
 .new_ex_form {
@@ -74,4 +84,14 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+  }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f7;
+    color: #424245;
+    text-align: center;
   }
