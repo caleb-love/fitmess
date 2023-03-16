@@ -34,8 +34,14 @@ router.get("/exercises/:id", (req, res) => {
 });
 
 // show new exercise page
-router.get("/exercises/new", (req, res) => {
-  res.render("exercise_new");
+router.get("/exercises/new", ensureLoggedIn, (req, res) => {
+  const sql = `select exercise_title, exercise_id from exercises;`;
+  db.query(sql, (err, dbRes) => {
+    const exercises = dbRes.rows;
+    res.render("exercise_new", {
+      exercises: exercises,
+    });
+  });
 });
 
 // add an exercise

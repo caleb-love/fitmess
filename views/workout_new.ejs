@@ -4,14 +4,14 @@
 
 <form action="/workouts" method="post">
   <label for="">Add Exercise</label>
-  <% for (let i = 0; i < exercises.length; i++) { %>
+  <% for (exercise of exercises) { %>
   <li >
     <input
       type="checkbox"
-      id="<%= exercises[i].exercise_title %>"
-      name="<%= exercises[i].exercise_title %>"
+      id="<%= exercise.exercise_title %>"
+      name="<%= exercise.exercise_title %>"
     />
-    <label for="<%= exercises[i].exercise_title %>"><%= exercises[i].exercise_title %></label>
+    <label for="<%= exercise.exercise_title %>"><%= exercise.exercise_title %></label>
   </li>
   <% } %>
   <button>Add</button>

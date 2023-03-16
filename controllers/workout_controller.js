@@ -34,7 +34,7 @@ router.get("/workouts", ensureLoggedIn, (req, res) => {
 });
 // //       |
 router.get("/workouts/new", ensureLoggedIn, (req, res) => {
-  const sql = `select * from exercises ORDER BY exercise_title ASC;;`;
+  const sql = `select exercise_title, exercise_id from exercises;`;
   db.query(sql, (err, dbRes) => {
     const exercises = dbRes.rows;
     res.render("workout_new", {
@@ -44,11 +44,15 @@ router.get("/workouts/new", ensureLoggedIn, (req, res) => {
 });
 
 router.get("/workouts/:id", ensureLoggedIn, (req, res) => {
-  const sql = `select * from workouts where workout_id = $1;`;
+  const sql = `select * 
+  from workouts_exercises_junction 
+  join exercises on workouts_exercises_junction.junction_exercise_id = exercises.exercise_id
+  join workouts on workouts_exercises_junction.junction_workout_id = workouts.workout_id;`;
   console.log(sql);
 
   db.query(sql, [req.params.workout_id], (err, dbRes) => {
     if (err) {
+      console.log('hi');
       console.log(err);
     } else {
       const workout = dbRes.rows[0];
