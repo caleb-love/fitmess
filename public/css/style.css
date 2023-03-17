@@ -110,18 +110,21 @@ input {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    border: black 1px solid;
+    border-radius: 3px;
 }
 
 button {
     background-color: lightgray
-    border: none;
+    border: black 1px solid;
     color: #1d1d1f;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
-    border: none;
+    border-radius: 3px;
+
   }
 
   footer {
