@@ -9,24 +9,27 @@
   </head>
   <body>
     <header>
-      <h1 class="fitmess">FitMess</h1>
+      <span>
+        <h1 class="fitmess">FitMess</h1>
+      </span>
+      <span class="nav">
+        <nav>
+          <% if (isLoggedIn()) { %>
+          <div>
+            <a href="/">Home</a>
+            <a href="/exercises">All Exercises</a>
+            <a href="/exercises/new">Create an Exercise</a>
+            <a href="/workouts">All Workouts</a>
+            <a href="/workouts/new">Create a Workout</a>
+            <a href="/workouts/list">Do Workout</a>
+          </div>
 
-      <nav>
-        <% if (isLoggedIn()) { %>
-        <div>
-          <a href="/">Home</a>
-          <a href="/exercises">All Exercises</a>
-          <a href="/exercises/new">Create an Exercise</a>
-          <a href="/workouts">All Workouts</a>
-          <a href="/workouts/new">Create a Workout</a>
-          <a href="/workouts/list">Do Workout</a>
-        </div>
-
-        <% } %> <% if (isLoggedIn() === false) { %>
-        <a href="/login">Login</a>
-        <a href="/users/signup">Sign Up</a>
-        <% } %>
-      </nav>
+          <% } %> <% if (isLoggedIn() === false) { %>
+          <a href="/login">Login</a>
+          <a href="/users/signup">Sign Up</a>
+          <% } %>
+        </nav>
+      </span>
     </header>
 
     <%- body %>

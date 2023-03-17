@@ -16,6 +16,7 @@ li {
 
 
 .fitmess {
+    
     text-align: left;
     margin: 40px;
 }
@@ -23,6 +24,15 @@ li {
 .inspiration {
     margin-left: 30%;
     text-align: left;
+}
+
+.nav {
+    position: fixed;
+    left: 0;
+    top: 53px;
+    width: 100%;
+    color: #424245;
+    text-align: center;
 }
 
 .new_ex_form {

@@ -64,7 +64,7 @@ router.post("/exercises", (req, res) => {
 router.get("/exercises/:exercise_id/edit", (req, res) => {
   const sql = `SELECT * FROM exercises WHERE exercise_id = $1;`;
 
-  db.query(sql, [req.params.id], (err, dbRes) => {
+  db.query(sql, [req.params.exercise_id], (err, dbRes) => {
     if (err) {
       console.log(err);
     } else {
@@ -75,8 +75,8 @@ router.get("/exercises/:exercise_id/edit", (req, res) => {
 });
 
 router.put("/exercises/:exercise_id", (req, res) => {
-  const sql = `UPDATE exercises SET exercise_title = $1, WHERE exercise_id = $2;`;
-
+  const sql = `UPDATE exercises SET exercise_title = $1, weight = $2, sets = $3, reps = $4, rest = $5 WHERE exercise_id = $6;`;
+// console.log(sql);
   db.query(
     sql,
     [
@@ -88,6 +88,7 @@ router.put("/exercises/:exercise_id", (req, res) => {
       req.params.exercise_id,
     ],
     (err, dbRes) => {
+      console.log(dbRes);
       res.redirect(`/exercises/${req.params.exercise_id}`);
     }
   );
