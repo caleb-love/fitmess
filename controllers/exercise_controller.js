@@ -6,7 +6,7 @@ const ensureLoggedIn = require("./../middlewares/ensure_logged_in");
 const db = require("./../db");
 
 // shows all exercises
-router.get("/exercises", (req, res) => {
+router.get("/exercises", ensureLoggedIn, (req, res) => {
   const sql = "SELECT * FROM exercises ORDER BY exercise_title ASC;";
 
   db.query(sql, (err, dbRes) => {
@@ -24,7 +24,7 @@ router.get("/exercises/new", ensureLoggedIn, (req, res) => {
 });
 
 // show individual exercise
-router.get("/exercises/:id", (req, res) => {
+router.get("/exercises/:id", ensureLoggedIn, (req, res) => {
   const sql = `select * from exercises where exercise_id = $1;`;
   console.log('/exercises/:id sql', sql);
 
@@ -40,7 +40,7 @@ router.get("/exercises/:id", (req, res) => {
 
 
 // add an exercise
-router.post("/exercises", (req, res) => {
+router.post("/exercises", ensureLoggedIn, (req, res) => {
   const sql = `
     INSERT INTO exercises (exercise_title, weight, sets, reps, rest, exercise_user_id) VALUES ($1, $2, $3, $4, $5, $6);
   `;
@@ -61,7 +61,7 @@ router.post("/exercises", (req, res) => {
   );
 });
 
-router.get("/exercises/:exercise_id/edit", (req, res) => {
+router.get("/exercises/:exercise_id/edit", ensureLoggedIn, (req, res) => {
   const sql = `SELECT * FROM exercises WHERE exercise_id = $1;`;
 
   db.query(sql, [req.params.exercise_id], (err, dbRes) => {
@@ -74,7 +74,7 @@ router.get("/exercises/:exercise_id/edit", (req, res) => {
   });
 });
 
-router.put("/exercises/:exercise_id", (req, res) => {
+router.put("/exercises/:exercise_id", ensureLoggedIn, (req, res) => {
   const sql = `UPDATE exercises SET exercise_title = $1, weight = $2, sets = $3, reps = $4, rest = $5 WHERE exercise_id = $6;`;
 // console.log(sql);
   db.query(
@@ -94,7 +94,7 @@ router.put("/exercises/:exercise_id", (req, res) => {
   );
 });
 
-router.delete("/exercises/:exercise_id", (req, res) => {
+router.delete("/exercises/:exercise_id", ensureLoggedIn, (req, res) => {
   const sql = `DELETE FROM exercises WHERE exercise_id = $1;`;
 
   db.query(sql, [req.params.exercise_id], (err, dbRes) => {

@@ -1,8 +1,6 @@
 <h1>Edit Exercise</h1>
 
-<h2><%= exercise.exercise_id %></h2>
-
-<form action="/exercises/<%= exercise.exercise_id %>" method="post">
+<form class="edit_ex" action="/exercises/<%= exercise.exercise_id %>" method="post">
   <input type="hidden" name="_method" value="put" />
 
   <label for="">Exercise</label>

@@ -61,44 +61,44 @@ router.get("/workouts/:id", ensureLoggedIn, (req, res) => {
   });
 });
 
-// router.post("/workouts", ensureLoggedIn, (req, res) => {
-//   const sql = `
-//     INSERT INTO workouts (title, id)
-//     VALUES ($1, $2);
-//   `;
+router.post("/workouts", ensureLoggedIn, (req, res) => {
+  const sql = `
+    INSERT INTO workouts (title, id)
+    VALUES ($1, $2);
+  `;
 
-//   db.query(sql, [req.body.title, req.session.userId], (err, dbRes) => {
-//     res.redirect("/");
-//   });
-// });
+  db.query(sql, [req.body.workout_title, req.session.userId], (err, dbRes) => {
+    res.redirect("/");
+  });
+});
 
-// router.get("/workouts/:workout_id/edit", ensureLoggedIn, (req, res) => {
-//   const sql = `SELECT * FROM workouts WHERE id = $1;`;
+router.get("/workouts/:workout_id/edit", ensureLoggedIn, (req, res) => {
+  const sql = `SELECT * FROM workouts WHERE id = $1;`;
 
-//   db.query(sql, [req.params.workout_id], (err, dbRes) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       const workout = dbRes.rows[0];
-//       res.render("workout_edit", { workout: workout });
-//     }
-//   });
-// });
+  db.query(sql, [req.params.workout_id], (err, dbRes) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const workout = dbRes.rows[0];
+      res.render("workout_edit", { workout: workout });
+    }
+  });
+});
 
-// router.put("/workouts/:workout_id", ensureLoggedIn, (req, res) => {
-//   const sql = `UPDATE workouts SET title = $1 WHERE id = $2;`;
+router.put("/workouts/:workout_id", ensureLoggedIn, (req, res) => {
+  const sql = `UPDATE workouts SET title = $1 WHERE id = $2;`;
 
-//   db.query(sql, [req.body.title, req.params.workout_id], (err, dbRes) => {
-//     res.redirect(`/workouts/${req.params.workout_id}`);
-//   });
-// });
+  db.query(sql, [req.body.workout_title, req.params.workout_id], (err, dbRes) => {
+    res.redirect(`/workouts/${req.params.workout_id}`);
+  });
+});
 
-// router.delete("/workouts/:workout_id", ensureLoggedIn, (req, res) => {
-//   const sql = `DELETE FROM workouts WHERE id = $1;`;
+router.delete("/workouts/:workout_id", ensureLoggedIn, (req, res) => {
+  const sql = `DELETE FROM workouts WHERE id = $1;`;
 
-//   db.query(sql, [req.params.workout_id], (err, dbRes) => {
-//     res.redirect("/");
-//   });
-// });
+  db.query(sql, [req.params.workout_id], (err, dbRes) => {
+    res.redirect("/");
+  });
+});
 
 module.exports = router;
